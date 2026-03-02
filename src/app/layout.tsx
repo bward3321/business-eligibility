@@ -15,9 +15,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DSCR Calculator | Business Eligibility",
+  title: "Business Eligibility — Know exactly where you stand with lenders",
   description:
-    "Calculate your Debt Service Coverage Ratio and see exactly where you stand with lenders.",
+    "Free business financing calculators to help you understand your eligibility before you apply.",
 };
 
 export default function RootLayout({
