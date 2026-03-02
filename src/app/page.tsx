@@ -15,6 +15,13 @@ const CALCULATORS = [
       "Estimate monthly payments across SBA, bank, equipment, and other business loan types.",
     icon: "💰",
   },
+  {
+    href: "/global-debt-service",
+    title: "Global Debt Service Calculator",
+    description:
+      "See the full picture lenders evaluate — business and personal debt obligations combined.",
+    icon: "🌐",
+  },
 ];
 
 export default function Home() {
