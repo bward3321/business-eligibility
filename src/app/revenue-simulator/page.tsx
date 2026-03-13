@@ -525,33 +525,38 @@ export default function RevenueSimulatorPage() {
             <h3 className="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-5">
               12-Month Revenue Projection
             </h3>
-            <div className="flex items-end gap-2 h-48">
+            <div className="flex items-end gap-2" style={{ height: 192 }}>
               {calc.months.map((m, i) => {
                 const grossH =
-                  maxBarVal > 0 ? (m.gross / maxBarVal) * 100 : 0;
-                const netH = maxBarVal > 0 ? (m.net / maxBarVal) * 100 : 0;
+                  maxBarVal > 0 ? Math.round((m.gross / maxBarVal) * 160) : 0;
+                const netH =
+                  maxBarVal > 0 ? Math.round((m.net / maxBarVal) * 160) : 0;
                 return (
                   <div
                     key={i}
-                    className="flex-1 flex flex-col items-center gap-1"
+                    className="flex-1 flex flex-col items-center justify-end"
+                    style={{ height: "100%" }}
                   >
-                    <span className="text-[9px] font-mono text-slate-500">
+                    <span className="text-[9px] font-mono text-slate-500 mb-1 shrink-0">
                       {shortNum(m.gross)}
                     </span>
-                    <div className="w-full relative" style={{ height: `${grossH}%` }}>
+                    <div
+                      className="w-full relative shrink-0 rounded-t-md"
+                      style={{ height: grossH }}
+                    >
                       <div
-                        className="absolute inset-0 rounded-t-md transition-all duration-300"
+                        className="absolute inset-0 rounded-t-md"
                         style={{ backgroundColor: `${TEAL}40` }}
                       />
                       <div
-                        className="absolute bottom-0 left-0 right-0 rounded-t-md transition-all duration-300"
+                        className="absolute bottom-0 left-0 right-0 rounded-t-md"
                         style={{
-                          height: `${grossH > 0 ? (netH / grossH) * 100 : 0}%`,
+                          height: netH,
                           backgroundColor: `${GREEN}50`,
                         }}
                       />
                     </div>
-                    <span className="text-[9px] text-slate-600">
+                    <span className="text-[9px] text-slate-600 mt-1 shrink-0">
                       {MONTH_LABELS[i]}
                     </span>
                   </div>
