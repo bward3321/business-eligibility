@@ -22,6 +22,13 @@ const CALCULATORS = [
       "See the full picture lenders evaluate — business and personal debt obligations combined.",
     icon: "🌐",
   },
+  {
+    href: "/sba-prescreener",
+    title: "SBA Eligibility Pre-Screener",
+    description:
+      "Answer 10 quick questions to see which SBA loan programs you may qualify for — in under 2 minutes.",
+    icon: "🏛️",
+  },
 ];
 
 export default function Home() {
