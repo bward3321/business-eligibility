@@ -29,6 +29,13 @@ const CALCULATORS = [
       "Answer 10 quick questions to see which SBA loan programs you may qualify for — in under 2 minutes.",
     icon: "🏛️",
   },
+  {
+    href: "/bankability-score",
+    title: "Bankability Score",
+    description:
+      "Your comprehensive funding readiness score across all 6 dimensions banks evaluate.",
+    icon: "🎯",
+  },
 ];
 
 export default function Home() {
