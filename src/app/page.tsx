@@ -36,6 +36,13 @@ const CALCULATORS = [
       "Your comprehensive funding readiness score across all 6 dimensions banks evaluate.",
     icon: "🎯",
   },
+  {
+    href: "/cash-flow-forecaster",
+    title: "Cash Flow Forecaster",
+    description:
+      "Project your cash flow 12 months out and see exactly when your numbers cross lender approval thresholds.",
+    icon: "📈",
+  },
 ];
 
 export default function Home() {
