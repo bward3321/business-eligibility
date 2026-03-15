@@ -43,6 +43,13 @@ const CALCULATORS = [
       "Project your cash flow 12 months out and see exactly when your numbers cross lender approval thresholds.",
     icon: "📈",
   },
+  {
+    href: "/credit-utilization",
+    title: "Credit Utilization Optimizer",
+    description:
+      "See which cards are hurting your score the most and get an exact paydown plan to maximize your credit improvement.",
+    icon: "💳",
+  },
 ];
 
 export default function Home() {
