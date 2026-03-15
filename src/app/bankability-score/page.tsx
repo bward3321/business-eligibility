@@ -509,10 +509,10 @@ function RadarChart({
 }: {
   dimScores: Record<string, number>;
 }) {
-  const size = 280;
+  const size = 320;
   const cx = size / 2;
   const cy = size / 2;
-  const r = 110;
+  const r = 120;
   const levels = 5;
 
   const angle = (i: number) =>
@@ -537,7 +537,7 @@ function RadarChart({
     threshPoints.map((p, i) => (i === 0 ? `M${p[0]},${p[1]}` : `L${p[0]},${p[1]}`)).join(" ") + " Z";
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-[280px] mx-auto">
+    <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-[320px] mx-auto">
       {/* Grid levels */}
       {Array.from({ length: levels }).map((_, li) => {
         const lvl = ((li + 1) / levels) * 100;
@@ -571,7 +571,7 @@ function RadarChart({
             textAnchor="middle"
             dominantBaseline="middle"
             fill="#94a3b8"
-            fontSize={9}
+            fontSize={12}
             fontFamily="var(--font-dm-sans), sans-serif"
           >
             {dim.title}
@@ -597,9 +597,9 @@ function CurrencyInput({
 }) {
   return (
     <div className="space-y-1.5">
-      <label className="text-sm font-medium text-slate-400">{label}</label>
+      <label className="text-[14px] font-medium text-slate-400">{label}</label>
       <div className="relative">
-        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
+        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 text-base">
           $
         </span>
         <input
@@ -608,7 +608,7 @@ function CurrencyInput({
           value={value}
           onChange={(e) => onChange(toCurrencyInput(e.target.value))}
           placeholder="0"
-          className="w-full rounded-xl border border-slate-700 bg-slate-800/50 py-3 pl-8 pr-4 text-white font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
+          className="w-full rounded-xl border border-slate-700 bg-slate-800/50 py-3 pl-8 pr-4 text-base text-white font-mono focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 transition-colors"
         />
       </div>
     </div>
@@ -685,10 +685,10 @@ export default function BankabilityScore() {
       <main className="mx-auto w-full max-w-3xl px-4 pt-4 pb-20 flex-1">
         {/* Title */}
         <div className="text-center space-y-3 mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
             Bankability Score
           </h1>
-          <p className="text-slate-400 text-sm sm:text-base max-w-lg mx-auto">
+          <p className="text-slate-400 text-base sm:text-lg max-w-lg mx-auto">
             Your comprehensive funding readiness score across all 6 dimensions
             banks evaluate.
           </p>
@@ -702,16 +702,16 @@ export default function BankabilityScore() {
                 <button
                   key={dim.id}
                   onClick={() => setActiveTab(i)}
-                  className={`flex items-center gap-1.5 shrink-0 rounded-xl px-3 py-2 text-xs font-medium transition-all ${
+                  className={`flex items-center gap-1.5 shrink-0 rounded-xl px-3.5 py-2.5 text-[13px] font-medium transition-all ${
                     activeTab === i
                       ? "bg-cyan-500/15 border border-cyan-500/40 text-cyan-400"
                       : "bg-slate-900/50 border border-slate-700/50 text-slate-400 hover:border-slate-600 hover:text-slate-300"
                   }`}
                 >
-                  <span className="text-sm">{dim.icon}</span>
+                  <span className="text-base">{dim.icon}</span>
                   <span className="hidden sm:inline">{dim.title}</span>
                   <span className="sm:hidden">{dim.title.split(" ")[0]}</span>
-                  <span className="text-[10px] font-mono opacity-60">
+                  <span className="text-[11px] font-mono opacity-60">
                     {Math.round(dim.weight * 100)}%
                   </span>
                 </button>
@@ -728,10 +728,10 @@ export default function BankabilityScore() {
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{dim.icon}</span>
                     <div>
-                      <h2 className="text-lg font-semibold text-white">
+                      <h2 className="text-xl font-semibold text-white">
                         {dim.title}
                       </h2>
-                      <p className="text-xs text-slate-500 font-mono">
+                      <p className="text-[13px] text-slate-500 font-mono">
                         {Math.round(dim.weight * 100)}% of overall score
                       </p>
                     </div>
@@ -742,7 +742,7 @@ export default function BankabilityScore() {
                       const selected = values[field.id];
                       return (
                         <div key={field.id} className="space-y-2">
-                          <label className="text-sm font-medium text-slate-400">
+                          <label className="text-[14px] font-medium text-slate-400">
                             {field.label}
                           </label>
                           <div className="flex flex-wrap gap-2">
@@ -752,7 +752,7 @@ export default function BankabilityScore() {
                                 onClick={() =>
                                   setValue(field.id, String(opt.score))
                                 }
-                                className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                                className={`rounded-full px-4 py-2.5 text-[14px] font-medium transition-all ${
                                   selected === String(opt.score)
                                     ? "bg-cyan-500/15 border border-cyan-500/50 text-cyan-400"
                                     : "bg-slate-800/50 border border-slate-700 text-slate-300 hover:border-slate-600"
@@ -778,10 +778,10 @@ export default function BankabilityScore() {
                     if (field.type === "display") {
                       return (
                         <div key={field.id} className="space-y-1.5">
-                          <label className="text-sm font-medium text-slate-400">
+                          <label className="text-[14px] font-medium text-slate-400">
                             {field.label}
                           </label>
-                          <div className="rounded-xl border border-slate-700 bg-slate-800/30 py-3 px-4 font-mono text-lg">
+                          <div className="rounded-xl border border-slate-700 bg-slate-800/30 py-3 px-4 font-mono text-xl">
                             {totalDebt > 0 ? (
                               <span
                                 className={
@@ -795,13 +795,13 @@ export default function BankabilityScore() {
                                 {dscr.toFixed(2)}x
                               </span>
                             ) : (
-                              <span className="text-slate-500">
+                              <span className="text-slate-500 text-base">
                                 Enter revenue, expenses & debt above
                               </span>
                             )}
                           </div>
                           {totalDebt > 0 && (
-                            <p className="text-xs text-slate-500">
+                            <p className="text-[12px] text-slate-500">
                               NOI: $
                               {noi.toLocaleString()} ÷ Total Debt: $
                               {totalDebt.toLocaleString()}
@@ -817,7 +817,7 @@ export default function BankabilityScore() {
                   <div className="flex items-center justify-between pt-2">
                     <button
                       onClick={() => setActiveTab((t) => Math.max(0, t - 1))}
-                      className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
+                      className={`flex items-center gap-1.5 text-[15px] font-medium transition-colors ${
                         i === 0
                           ? "text-slate-700 cursor-default"
                           : "text-slate-400 hover:text-white"
@@ -847,7 +847,7 @@ export default function BankabilityScore() {
                             Math.min(DIMENSIONS.length - 1, t + 1)
                           )
                         }
-                        className="flex items-center gap-1.5 text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                        className="flex items-center gap-1.5 text-[15px] font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
                       >
                         Next
                         <svg
@@ -867,7 +867,7 @@ export default function BankabilityScore() {
                     ) : (
                       <button
                         onClick={handleCalculate}
-                        className="rounded-xl bg-cyan-500 px-6 py-2.5 text-sm font-semibold text-slate-950 hover:bg-cyan-400 active:scale-[0.98] transition-all"
+                        className="rounded-xl bg-cyan-500 px-7 py-3 text-base font-semibold text-slate-950 hover:bg-cyan-400 active:scale-[0.98] transition-all"
                       >
                         Calculate Bankability Score
                       </button>
@@ -886,20 +886,20 @@ export default function BankabilityScore() {
             <div className="grid sm:grid-cols-2 gap-6">
               {/* Left: Overall score */}
               <div className="rounded-2xl border border-slate-700/50 bg-slate-900/50 p-6 flex flex-col items-center justify-center text-center space-y-3">
-                <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">
+                <p className="text-sm font-medium text-slate-400 uppercase tracking-wider">
                   Bankability Score
                 </p>
                 <span
-                  className={`text-6xl font-bold font-mono ${gradeColor(overall)}`}
+                  className={`text-7xl sm:text-8xl font-bold font-mono ${gradeColor(overall)}`}
                 >
                   <AnimatedScore value={overall} />
                 </span>
                 <span
-                  className={`text-2xl font-bold border rounded-xl px-4 py-1.5 ${gradeBg(overall)}`}
+                  className={`text-3xl font-bold border rounded-xl px-5 py-2 ${gradeBg(overall)}`}
                 >
                   {letterGrade(overall)}
                 </span>
-                <p className={`text-sm font-semibold ${gradeColor(overall)}`}>
+                <p className={`text-base font-semibold ${gradeColor(overall)}`}>
                   {scoreLabel(overall)}
                 </p>
               </div>
@@ -912,7 +912,7 @@ export default function BankabilityScore() {
 
             {/* Dimension cards 3x2 grid */}
             <div>
-              <h2 className="text-xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-bold text-white mb-4">
                 Dimension Breakdown
               </h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -925,24 +925,24 @@ export default function BankabilityScore() {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-lg">{dim.icon}</span>
-                          <span className="text-sm font-semibold text-white">
+                          <span className="text-xl">{dim.icon}</span>
+                          <span className="text-[15px] font-semibold text-white">
                             {dim.title}
                           </span>
                         </div>
                         <span
-                          className={`text-xs font-bold border rounded-lg px-2 py-0.5 ${gradeBg(s)}`}
+                          className={`text-sm font-bold border rounded-lg px-2.5 py-1 ${gradeBg(s)}`}
                         >
                           {letterGrade(s)}
                         </span>
                       </div>
                       <div className="flex items-end gap-2">
                         <span
-                          className={`text-2xl font-bold font-mono ${gradeColor(s)}`}
+                          className={`text-3xl font-bold font-mono ${gradeColor(s)}`}
                         >
                           {s}
                         </span>
-                        <span className="text-sm text-slate-500 mb-0.5">
+                        <span className="text-base text-slate-500 mb-0.5">
                           / 100
                         </span>
                       </div>
@@ -961,7 +961,7 @@ export default function BankabilityScore() {
             {/* Priority Improvement Roadmap */}
             {roadmap.length > 0 && (
               <div>
-                <h2 className="text-xl font-bold text-white mb-4">
+                <h2 className="text-2xl font-bold text-white mb-4">
                   Priority Improvement Roadmap
                 </h2>
                 <div className="rounded-2xl border border-slate-700/50 bg-slate-900/50 p-6 space-y-4">
@@ -969,7 +969,7 @@ export default function BankabilityScore() {
                     <div key={item.dim.id} className="flex gap-4">
                       <div className="flex flex-col items-center">
                         <span
-                          className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
                           style={{ backgroundColor: item.dim.colorHex + "33" }}
                         >
                           {idx + 1}
@@ -980,10 +980,10 @@ export default function BankabilityScore() {
                       </div>
                       <div className="pb-4 flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-white">
+                          <span className="text-[15px] font-semibold text-white">
                             {item.dim.icon} {item.dim.title}
                           </span>
-                          <span className="text-xs font-mono text-slate-400">
+                          <span className="text-[13px] font-mono text-slate-400">
                             {item.score}/100 →{" "}
                             <span className="text-cyan-400">
                               +{item.potentialGain} pts
@@ -991,7 +991,7 @@ export default function BankabilityScore() {
                             potential
                           </span>
                         </div>
-                        <p className="text-xs text-slate-400 leading-relaxed">
+                        <p className="text-[14px] text-slate-400 leading-relaxed">
                           {IMPROVEMENT_TIPS[item.dim.id]}
                         </p>
                       </div>
@@ -1003,7 +1003,7 @@ export default function BankabilityScore() {
 
             {/* Distance to Bankable */}
             <div>
-              <h2 className="text-xl font-bold text-white mb-4">
+              <h2 className="text-2xl font-bold text-white mb-4">
                 Distance to Bankable
               </h2>
               <div className="rounded-2xl border border-slate-700/50 bg-slate-900/50 p-6 space-y-4">
@@ -1020,13 +1020,13 @@ export default function BankabilityScore() {
                     style={{ left: "70%" }}
                   />
                   <div
-                    className="absolute -top-5 text-[10px] font-mono text-slate-400 -translate-x-1/2"
+                    className="absolute -top-6 text-[12px] font-mono text-slate-400 -translate-x-1/2"
                     style={{ left: "70%" }}
                   >
                     70 — Bankable
                   </div>
                 </div>
-                <p className="text-sm text-center">
+                <p className="text-base text-center">
                   {distanceTo70 > 0 ? (
                     <span className="text-slate-400">
                       You need{" "}
@@ -1047,28 +1047,28 @@ export default function BankabilityScore() {
 
             {/* CTA */}
             <div className="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-8 text-center space-y-4">
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">
                 Want a Complete Eligibility Breakdown?
               </h2>
-              <p className="text-slate-400 text-sm max-w-md mx-auto">
+              <p className="text-slate-400 text-base max-w-md mx-auto">
                 Get the full Bank Ready Blueprint — a personalized report with
                 lender matching, document checklists, and step-by-step action
                 plan.
               </p>
               <a
                 href="https://businesseligibility.com/checkout/bank-ready-blueprint"
-                className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-8 py-3 text-sm font-semibold text-slate-950 hover:bg-cyan-400 active:scale-[0.98] transition-all"
+                className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-8 py-3.5 text-base font-semibold text-slate-950 hover:bg-cyan-400 active:scale-[0.98] transition-all"
               >
                 Get Bank Ready Blueprint — $999
               </a>
-              <p className="text-xs text-slate-500">Payment plans available</p>
+              <p className="text-[13px] text-slate-500">Payment plans available</p>
             </div>
 
             {/* Start Over */}
             <div className="text-center">
               <button
                 onClick={handleReset}
-                className="rounded-xl border border-slate-700 px-6 py-3 text-sm font-medium text-slate-300 hover:border-slate-600 hover:text-white transition-all"
+                className="rounded-xl border border-slate-700 px-6 py-3 text-base font-medium text-slate-300 hover:border-slate-600 hover:text-white transition-all"
               >
                 Start Over
               </button>
@@ -1079,7 +1079,7 @@ export default function BankabilityScore() {
 
       {/* Footer */}
       <footer className="border-t border-slate-800 py-8 text-center">
-        <p className="text-xs text-slate-600">
+        <p className="text-[13px] text-slate-600">
           Powered by{" "}
           <span className="text-slate-400 font-medium">
             Business Eligibility
