@@ -50,6 +50,13 @@ const CALCULATORS = [
       "See which cards are hurting your score the most and get an exact paydown plan to maximize your credit improvement.",
     icon: "💳",
   },
+  {
+    href: "/tax-impact",
+    title: "Tax Impact Simulator",
+    description:
+      "See how your tax strategy is helping or hurting your loan eligibility — and what to reclassify to maximize bankable income.",
+    icon: "📋",
+  },
 ];
 
 export default function Home() {
